@@ -12,7 +12,7 @@ name: run_workflow.yml
 
 jobs:
   states:
-    runs-on: self-hosted
+    runs-on: matrix-concurrent
     strategy:
       fail-fast: false
       matrix:
