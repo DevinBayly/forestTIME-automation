@@ -1,0 +1,20 @@
+on:
+  workflow_dispatch: 
+    inputs:
+      release:
+        description: "Make a new GitHub/Zenodo release with this run?"
+        required: true
+        type: boolean
+
+name: run_workflow.yml
+
+jobs:
+  states:
+    runs-on: matrix-concurrent
+    steps:
+      - run: echo $SEC_USER@$FHOST $SEC_USER@$SHOST
+        env:
+          SEC_USER: ${{ secrets.SECRET_USER}}
+          FHOST: ${{ secrets.FIRST_HOST}}
+          SHOST: ${{ secrets.SECOND_HOST}}
+
