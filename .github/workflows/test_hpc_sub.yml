@@ -12,7 +12,17 @@ jobs:
   states:
     runs-on: matrix-concurrent
     steps:
+      - run: | 
+          mkdir ~/.ssh -p
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/private.key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_HPC }}
       - run: echo $SEC_USER@$FHOST $SEC_USER@$SHOST
+        env:
+          SEC_USER: ${{ secrets.SECRET_USER}}
+          FHOST: ${{ secrets.FIRST_HOST}}
+          SHOST: ${{ secrets.SECOND_HOST}}
+      - run: ssh -J -i ~/.ssh/private.key $SEC_USER@$FHOST $SEC_USER@$SHOST hostname -i
         env:
           SEC_USER: ${{ secrets.SECRET_USER}}
           FHOST: ${{ secrets.FIRST_HOST}}
