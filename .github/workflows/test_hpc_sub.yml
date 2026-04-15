@@ -13,7 +13,7 @@ jobs:
     runs-on: matrix-concurrent
     steps:
       - run: | 
-          mkdir ~/.ssh -p
+          mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/"$KEY_FILE_NAME"
           sudo chmod 600 ~/.ssh/"$KEY_FILE_NAME"
           echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
