@@ -21,13 +21,9 @@ jobs:
           KEY_NAME: ${{ secrets.KEY_FILE_NAME }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_HPC }}
           SSH_KNOWN_HOSTS: ${{ secrets.AUTH_HOSTS }}
-      - run: echo $SEC_USER@$FHOST $SEC_USER@$SHOST
+      - run: ssh -i ~/.ssh/"$KEY_NAME" -J $SEC_USER@$FHOST $SEC_USER@$SHOST hostname -i
         env:
-          SEC_USER: ${{ secrets.SECRET_USER}}
-          FHOST: ${{ secrets.FIRST_HOST}}
-          SHOST: ${{ secrets.SECOND_HOST}}
-      - run: ssh -i ~/.ssh/private.key -J $SEC_USER@$FHOST $SEC_USER@$SHOST hostname -i
-        env:
+          KEY_NAME: ${{ secrets.KEY_FILE_NAME }}
           SEC_USER: ${{ secrets.SECRET_USER}}
           FHOST: ${{ secrets.FIRST_HOST}}
           SHOST: ${{ secrets.SECOND_HOST}}
