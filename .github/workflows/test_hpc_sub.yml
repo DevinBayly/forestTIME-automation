@@ -6,7 +6,7 @@ on:
         required: true
         type: boolean
 
-name: run_workflow.yml
+name: hpc_sub.yml
 
 jobs:
   states:
