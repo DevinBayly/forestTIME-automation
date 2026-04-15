@@ -21,7 +21,7 @@ jobs:
           KEY_NAME: ${{ secrets.KEY_FILE_NAME }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_HPC }}
           SSH_KNOWN_HOSTS: ${{ secrets.AUTH_HOSTS }}
-      - run: ssh -i ~/.ssh/"$KEY_NAME" -J $SEC_USER@$FHOST $SEC_USER@$SHOST  ". /usr/local/bin/slurm-selector.sh ocelote;sbatch -A $ACCOUNT -t 00:01:00 -p standard -N 1 -n 1 "
+      - run: ssh -i ~/.ssh/"$KEY_NAME" -J $SEC_USER@$FHOST $SEC_USER@$SHOST  ". /usr/local/bin/slurm-selector.sh ocelote;sbatch -A $ACCOUNT -t 00:01:00 -p standard -N 1 -n 1 test_sleep.sh"
         env:
           ACCOUNT: ${{ secrets.ACCOUNT_NAME}}
           KEY_NAME: ${{ secrets.KEY_FILE_NAME }}
