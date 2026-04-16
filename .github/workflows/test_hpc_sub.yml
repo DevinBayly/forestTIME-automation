@@ -21,7 +21,7 @@ jobs:
           KEY_NAME: ${{ secrets.KEY_FILE_NAME }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_HPC }}
           SSH_KNOWN_HOSTS: ${{ secrets.AUTH_HOSTS }}
-      - run: ssh -i ~/.ssh/"$KEY_NAME" -J $SEC_USER@$FHOST $SEC_USER@$SHOST  ". /usr/local/bin/slurm-selector.sh ocelote; cd $HPC_FOLDER_PATH ; sbatch -A $ACCOUNT -t 02:00:00 --array=1-48 -p standard -N 1 -n 6 coordinator.sh"
+      - run: ssh -i ~/.ssh/"$KEY_NAME" -J $SEC_USER@$FHOST $SEC_USER@$SHOST  ". /usr/local/bin/slurm-selector.sh ocelote; cd $HPC_FOLDER_PATH ; sbatch -A $ACCOUNT -t 02:00:00 --array=1-2 -p standard -N 1 -n 6 coordinator.sh"
         env:
           HPC_FOLDER_PATH: ${{ secrets.HPC_FOLDER_PATH}}
           ACCOUNT: ${{ secrets.ACCOUNT_NAME}}
