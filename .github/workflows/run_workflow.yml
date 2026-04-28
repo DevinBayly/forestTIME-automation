@@ -21,7 +21,7 @@ jobs:
     container:
       image: ghcr.io/devinbayly/foresttime-hpc:latest
     steps:
-      -name: install forestime
+      - name: install forestime
         run: R -e "pak::pak('Evans-Ecology-Lab/forestTIME')"
       - uses: actions/checkout@v4
         with:
