@@ -38,8 +38,8 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.state }}_${{ matrix.year_var}}
-          path: fia/parquet/*
+          name: ${{ matrix.year_var}}
+          path: fia/parquet/${{matrix.state}}
 
   release:
   # only happens if schedule or workflow_dispatch with release=TRUE
