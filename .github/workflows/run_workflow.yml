@@ -34,4 +34,9 @@ jobs:
         run: python3 zenodo-api.py
         env:
           ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: zip_demo
+          path: fia/parquet/
   
