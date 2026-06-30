@@ -1,4 +1,7 @@
 on:
+  push:
+    branches:
+      - "devin_uploadfile_organizing"
   schedule:
     - cron: 0 0 1 * * # midnight on 1st of month
   workflow_dispatch: 
@@ -18,10 +21,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download artifacts
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v4
         with:
           path: "fia/parquet"
-          run-id: 27160227886
+          run-id: 24730233525
           github-token: ${{ secrets.GH_TOKEN }}
           merge-multiple: true
 
